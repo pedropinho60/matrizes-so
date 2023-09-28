@@ -1,13 +1,13 @@
 #!/bin/bash
 
-n=100
+n=3200
 
 ./build/gerador $n $n $n $n
 
 > tempos_threads_e2.txt
 > tempos_processos_e2.txt
 
-for i in {32..2}
+for i in 32 16 8 4 2
 do
     p=$(( ($n*$n / $i ) + ($n*$n % $i > 0) ))
 

@@ -15,3 +15,7 @@ add_executable(sequencial
 add_executable(threads
                src/threads.cpp
                src/auxiliar.cpp)
+
+add_executable(processos
+               src/processos.cpp
+               src/auxiliar.cpp)

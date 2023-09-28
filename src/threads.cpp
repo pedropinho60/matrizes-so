@@ -1,4 +1,3 @@
-#include <bits/chrono.h>
 #include <chrono>
 #include <cmath>
 #include <fstream>
@@ -11,11 +10,12 @@
 
 #include "../include/auxiliar.hpp"
 
+std::vector<std::vector<int>> matriz1;
+std::vector<std::vector<int>> matriz2;
+
 struct arg_struct {
     int first;
     int last;
-    std::vector<std::vector<int>> matriz1;
-    std::vector<std::vector<int>> matriz2;
     std::string filename;
     std::chrono::steady_clock::time_point begin;
 };
@@ -23,8 +23,6 @@ struct arg_struct {
 void* multiplicarThreads(void* args) { 
     int first = ((arg_struct*)args)->first;
     int last = ((arg_struct*)args)->last;
-    auto& matriz1 = ((arg_struct*)args)->matriz1;
-    auto& matriz2 = ((arg_struct*)args)->matriz2;
     std::string filename = ((arg_struct*)args)->filename;
     auto begin = ((arg_struct*)args)->begin;
     
@@ -69,11 +67,11 @@ void* test(void* args) {
 
 int main(int argc, char* argv[]) {
     std::ifstream file1(argv[1]);
-    auto matriz1 = readMatriz(file1);
+    matriz1 = readMatriz(file1);
     file1.close();
 
     std::ifstream file2(argv[2]);
-    auto matriz2 = readMatriz(file2);
+    matriz2 = readMatriz(file2);
     file1.close();
 
     system("rm -f resultado_threads/*");
@@ -97,8 +95,6 @@ int main(int argc, char* argv[]) {
         std::string filename = "resultado_threads/thread_" + std::to_string(i/p);
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-        structs[i/p].matriz1 = matriz1;
-        structs[i/p].matriz2 = matriz2;
         structs[i/p].filename = filename;
         structs[i/p].begin = begin;
         structs[i/p].first = i;

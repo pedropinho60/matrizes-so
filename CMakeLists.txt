@@ -11,3 +11,7 @@ add_executable(gerador
 add_executable(sequencial
                src/sequencial.cpp
                src/auxiliar.cpp)
+
+add_executable(threads
+               src/threads.cpp
+               src/auxiliar.cpp)

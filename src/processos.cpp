@@ -54,6 +54,7 @@ int main(int argc, char* argv[]) {
     matriz2 = readMatriz(file2);
     file1.close();
 
+    system("mkdir -p resultado_processos");
     system("rm -f resultado_processos/*");
 
     int n1 = matriz1.size();

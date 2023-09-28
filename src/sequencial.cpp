@@ -5,12 +5,12 @@
 
 #include "../include/auxiliar.hpp"
 
-int main() {
-    std::ifstream file1("matriz1.txt");
+int main(int argc, char* argv[]) {
+    std::ifstream file1(argv[1]);
     auto matriz1 = readMatriz(file1);
     file1.close();
 
-    std::ifstream file2("matriz1.txt");
+    std::ifstream file2(argv[2]);
     auto matriz2 = readMatriz(file2);
     file1.close();
 

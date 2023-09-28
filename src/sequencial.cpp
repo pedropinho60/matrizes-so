@@ -39,6 +39,4 @@ int main(int argc, char* argv[]) {
     writeMatriz(matrizResultado, outfile);
     outfile << tempo << '\n';
     outfile.close();
-
-    std::cout << "Tempo: " << tempo << " [ms]" << std::endl;
 }
